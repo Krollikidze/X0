@@ -9,17 +9,23 @@ def draw_board():
 
 
 def take_input(token):
-    while True:
-        value = input('Выбите позицию ' + token + ':')
-        if not (value in '123456789'):
-            print('Неверный ввод, повторите ')
+    valid = False
+    while not valid:
+        answer = input('Выбите позицию ' + token + ':')
+        try:
+            answer = int(answer)
+        except:
+            print("Некорректный ввод")
             continue
-        value = int(value)
-        if str(board[value - 1]) in 'X0':
-            print('Клетка уже занята')
-            continue
-        board[value - 1] = token
-        break
+        if answer >= 1 and answer <= 9:
+            if (str(board[answer - 1])) not in 'XO':
+                board[answer - 1] = token
+                valid = True
+            else:
+                print('Клетка уже занята')
+
+        else:
+            print("Введите число от 1 до 9")
 
 
 def check_win():
