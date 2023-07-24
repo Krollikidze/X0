@@ -18,7 +18,7 @@ def take_input(token):
             print("Некорректный ввод")
             continue
         if answer >= 1 and answer <= 9:
-            if (str(board[answer - 1])) not in 'XO':
+            if (str(board[answer - 1])) not in ('X', '0'):
                 board[answer - 1] = token
                 valid = True
             else:
@@ -58,14 +58,3 @@ def game():
 
 
 game()
-
-
-
-
-
-
-
-
-
-
-
